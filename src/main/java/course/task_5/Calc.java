@@ -11,7 +11,7 @@ public class Calc {
         double result;
         String sign;
         Scanner in = new Scanner(System.in);
-        Operation operation = new Devide();
+        Operation operation = new Divide();
 
         System.out.print("Hi!\nToday we will add, subtract, multiply and divide two numbers!\n" +
                 "At first select operation: +, -, *, / : ");
@@ -35,7 +35,13 @@ public class Calc {
                 operation = new Subtract();
                 break;
             case "/":
-                    operation = new Devide();
+                operation = new Divide();
+                try {
+                    operation.operate(num1, num2);
+                } catch (ArithmeticException e){
+                    System.out.println(e.getMessage());
+                    System.exit(0);
+                }
                     break;
             case "*":
                 operation = new Multiply();
